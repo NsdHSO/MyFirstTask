@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Task!1</string>
+    <string name="app_name">X and 0 </string>
+    <string name="player1_0_0">Player1 : 0</string>
+    <string name="player2_0_0">Player2 : 0</string>
+    <string name="button_00"></string>
+    <string name="button_01"></string>
+    <string name="button_02"></string>
+    <string name="button_10"></string>
+    <string name="button_11"></string>
+    <string name="button_12"></string>
+    <string name="button_20"></string>
+    <string name="button_21"></string>
+    <string name="button_22"></string>
+    <string name="linea_00"></string>
+    <string name="linea_10"></string>
+    <string name="linea_20"></string>
+    <string name="Reset">Reset</string>
+    <string name="Equality">Equality: 0</string>
 </resources>
