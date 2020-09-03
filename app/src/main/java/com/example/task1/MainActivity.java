@@ -147,9 +147,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void writePlayer1() {
         playerPuncte1++;
         updateScore();
+        Toast.makeText(this, "First Player win", Toast.LENGTH_SHORT).show();
     }
 
     public void writePlayer2() {
+        Toast.makeText(this, "Second Player win", Toast.LENGTH_SHORT).show();
         playerPuncte2++;
         updateScore();
     }
