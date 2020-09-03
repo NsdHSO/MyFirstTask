@@ -3,21 +3,23 @@ package com.example.task1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button[][] buttons = new Button[3][3];
-
     private TextView scorePlayer1;
     private TextView scorePlayer2;
     private TextView equality;
     private int playerPuncte1;
     private int playerPuncte2;
-    private boolean firstRound = !true;
+    private boolean firstRound = true;
     private int equalityNumber;
     private int numberOfLaps;
 
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             extra
                         00 - 11 - 22
                         20 - 11 - 02
-            only seven combinations are possible
+            only eight combinations are possible
 
 
      */
@@ -59,7 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 String getButtonsID = "button_" + i + j;
-                int resId = getResources().getIdentifier(getButtonsID, "id", getPackageName());
+                int resId;
+                resId = getResources().getIdentifier(getButtonsID, "id", getPackageName());
                 buttons[i][j] = findViewById(resId);
                 buttons[i][j].setOnClickListener(this);
             }
@@ -77,13 +80,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
+        Log.i("test","Works Yee");
         if (!((Button) view).getText().toString().equals("")) {
             return;
         }
         if (firstRound) {
             ((Button) view).setText("X");
         } else {
-            ((Button) view).setText("O");
+            Random random = new Random();
+            int cpuMove = random.nextInt(9);
+                ((Button) view).setText("O");
+
         }
         numberOfLaps++;
         if (checkWhichPlayerWin()) {
@@ -128,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (combined[0][0].equals(combined[1][1]) && combined[0][0].equals(combined[2][2]) && !combined[0][0].equals("")) {
             return true;
         }
+        // Second diagonal
         if (combined[0][2].equals(combined[1][1]) && combined[0][2].equals(combined[2][0]) && !combined[0][2].equals("")) {
             return true;
         }
@@ -147,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void equality() {
-        Toast.makeText(this, "Draw!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Egalitate!", Toast.LENGTH_SHORT).show();
         resetCells();
     }
 
