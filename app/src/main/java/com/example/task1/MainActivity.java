@@ -57,13 +57,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         scorePlayer1 = findViewById(R.id.Player1);
         scorePlayer2 = findViewById(R.id.Player2);
         equality = findViewById(R.id.Equality);
-
+        buttons[0][0] = findViewById(R.id.button_00);
+        buttons[0][1] = findViewById(R.id.button_01);
+        buttons[0][2] = findViewById(R.id.button_02);
+        buttons[1][0] = findViewById(R.id.button_10);
+        buttons[1][1] = findViewById(R.id.button_11);
+        buttons[1][2] = findViewById(R.id.button_12);
+        buttons[2][0] = findViewById(R.id.button_20);
+        buttons[2][1] = findViewById(R.id.button_21);
+        buttons[2][2] = findViewById(R.id.button_22);
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                String getButtonsID = "button_" + i + j;
-                int resId;
-                resId = getResources().getIdentifier(getButtonsID, "id", getPackageName());
-                buttons[i][j] = findViewById(resId);
+//                String getButtonsID = "button_" + i + j;
+//                int resId;
+//                resId = getResources().getIdentifier(getButtonsID, "id", getPackageName());
+//                buttons[i][j] = findViewById(resId);
                 buttons[i][j].setOnClickListener(this);
             }
         }
@@ -145,9 +153,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void writePlayer1() {
+        Toast.makeText(this, "First Player win", Toast.LENGTH_SHORT).show();
         playerPuncte1++;
         updateScore();
-        Toast.makeText(this, "First Player win", Toast.LENGTH_SHORT).show();
     }
 
     public void writePlayer2() {
