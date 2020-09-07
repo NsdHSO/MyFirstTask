@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "669713245503",
+    "firebase_url": "https://applogin-0-1.firebaseio.com",
+    "project_id": "applogin-0-1",
+    "storage_bucket": "applogin-0-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669713245503:android:b57acffc956dec781e5f8a",
+        "android_client_info": {
+          "package_name": "com.example.applogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669713245503-158fte2ngr5imf63rjrdjvr0tlkum7th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJKjP5YStEWB0t9Ap8qNUOZZSbH3_zfho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669713245503-158fte2ngr5imf63rjrdjvr0tlkum7th.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "669713245503-hpjgd767rdp33tjga84oafjifmp1f4r4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.appLogin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669713245503:android:a8cd008a849ab3221e5f8a",
+        "android_client_info": {
+          "package_name": "com.example.task1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669713245503-158fte2ngr5imf63rjrdjvr0tlkum7th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJKjP5YStEWB0t9Ap8qNUOZZSbH3_zfho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669713245503-158fte2ngr5imf63rjrdjvr0tlkum7th.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "669713245503-hpjgd767rdp33tjga84oafjifmp1f4r4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.appLogin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

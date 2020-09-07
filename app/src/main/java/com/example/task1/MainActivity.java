@@ -1,13 +1,23 @@
 package com.example.task1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.task1.db.Xand0DatabaseModel;
+import com.example.task1.modelController.Xand0Deals;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
 
@@ -22,38 +32,45 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean firstRound = true;
     private int equalityNumber;
     private int numberOfLaps;
+    private FirebaseDatabase mFirebaseDatabase;
+    private DatabaseReference mReferenceDatabase;
+
+
 
     /*
-        (                           )
-        |                           |
-        |   |     |      |      |   |
-        |   |_00__|_01___|__02__|   |
-        |   |     |      |      |   |
-        |   |_10__|_11___|__12__|   |
-        |   |     |      |      |   |
-        |   |_20__|_21___|__22__|   |
-        |                           |
-        (                           )
-        combinet True =    Line
-                        00 - 01 - 02
-                        10 - 11 - 12
-                        20 - 21 -22
-                            Col
-                        00 - 10 - 20
-                        01 - 11 - 21
-                        02 - 12 - 22
+            (                           )
+            |                           |
+            |   |     |      |      |   |
+            |   |_00__|_01___|__02__|   |
+            |   |     |      |      |   |
+            |   |_10__|_11___|__12__|   |
+            |   |     |      |      |   |
+            |   |_20__|_21___|__22__|   |
+            |                           |
+            (                           )
+            combinet True =    Line
+                            00 - 01 - 02
+                            10 - 11 - 12
+                            20 - 21 -22
+                                Col
+                            00 - 10 - 20
+                            01 - 11 - 21
+                            02 - 12 - 22
 
-                            extra
-                        00 - 11 - 22
-                        20 - 11 - 02
-            only eight combinations are possible
+                                extra
+                            00 - 11 - 22
+                            20 - 11 - 02
+                only eight combinations are possible
 
 
-     */
+         */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Xand0DatabaseModel.openFbREference("Xand0");
+        mFirebaseDatabase = Xand0DatabaseModel.mFireBaseDB;
+        mReferenceDatabase = Xand0DatabaseModel.mDatabaseReference;
         scorePlayer1 = findViewById(R.id.Player1);
         scorePlayer2 = findViewById(R.id.Player2);
         equality = findViewById(R.id.Equality);
@@ -75,8 +92,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 buttons[i][j].setOnClickListener(this);
             }
         }
-        Button reset = findViewById(R.id.Reset);
-        reset.setOnClickListener(new View.OnClickListener() {
+        Button resetButton = findViewById(R.id.Reset);
+        resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 resetGame();
@@ -84,8 +101,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
 
+
     }
 
+
+
+
+    private void clean(){
+
+    }
     @Override
     public void onClick(View view) {
         Log.i("test","Works Yee");
@@ -95,8 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (firstRound) {
             ((Button) view).setText("X");
         } else {
-            Random random = new Random();
-            int cpuMove = random.nextInt(9);
+            
                 ((Button) view).setText("O");
 
         }
@@ -111,13 +134,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 writePlayer2();
                 resetCells();
             }
+            saveButton();
         } else if (numberOfLaps == 9) {
             equality();
             updateEqality();
             updateScore();
+            saveButton();
         } else {
             firstRound = !firstRound;
         }
+
     }
 
     public boolean checkWhichPlayerWin() {
@@ -199,5 +225,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         equalityNumber++;
 
     }
+    private void saveButton(){
+
+        String player1 = scorePlayer1.getText().toString();
+        String player2 = scorePlayer2.getText().toString();
+        Xand0Deals xand0Deals = new Xand0Deals(player1,player2);
+        mReferenceDatabase.push().setValue(xand0Deals);
+    }
+
+
+
 }
 
